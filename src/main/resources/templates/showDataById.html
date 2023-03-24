@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.2/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.js"></script>
+    <title>数据显示</title>
+</head>
+<body>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>数据序号</th>
+            <th>血氧</th>
+            <th>心率</th>
+            <th>数据可用性</th>
+            <th>检测日期</th>
+            <th>检测时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="data : ${dataList.list}">
+            <td th:text="${data.id}"></td>
+            <td th:text="${data.oxygenSaturation}"></td>
+            <td th:text="${data.heartRate}"></td>
+            <td th:text="${data.available}"></td>
+            <td th:text="${data.date}"></td>
+            <td th:text="${data.time}"></td>
+        </tr>
+    </tbody>
+
+
+</table>
+</body>
+</html>
