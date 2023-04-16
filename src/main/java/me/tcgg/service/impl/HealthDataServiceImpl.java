@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import me.tcgg.mapper.HealthDataMapper;
 import me.tcgg.pojo.HealthData;
+import me.tcgg.pojo.User;
 import me.tcgg.service.HealthDataService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,10 @@ public class HealthDataServiceImpl implements HealthDataService {
 
     public List<HashMap<String ,Object>> getUserDate(String uid){
         return healthDataMapper.selectDistinctDatesByUidWithSequence(uid);
+    }
+
+    public List<User> getAllUser(){
+        return healthDataMapper.getAllUser();
     }
 
 

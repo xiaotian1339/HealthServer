@@ -2,6 +2,7 @@ package me.tcgg.service;
 
 import com.github.pagehelper.PageInfo;
 import me.tcgg.pojo.HealthData;
+import me.tcgg.pojo.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,4 +13,5 @@ public interface HealthDataService {
     PageInfo<HealthData> selectByUid(String uid,int pageNum);
 
     List<HashMap<String ,Object>> getUserDate(String uid);
+    List<User> getAllUser();
 }

@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import me.tcgg.config.MqttConfig;
 import me.tcgg.enums.StatusCodeEnum;
 import me.tcgg.pojo.HealthData;
+import me.tcgg.pojo.ParamUser;
+import me.tcgg.pojo.User;
 import me.tcgg.sender.MqttSender;
 import me.tcgg.service.HealthDataService;
 import me.tcgg.service.MqttService;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/v1",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -102,10 +105,12 @@ public class MqttPubController {
 
 
     @PostMapping("/info")
-    public PageInfo<HealthData> getHealthData(@RequestParam("userId") String userId, @RequestParam("page") String page) {
+
+    public PageInfo<HealthData> getHealthData(@RequestBody ParamUser paramUser) {
         PageInfo<HealthData> healthDataPageInfo;
+        System.out.println(paramUser.getUserId() + paramUser.getPage());
         try {
-            healthDataPageInfo = healthDataService.selectByUid(userId, Integer.parseInt(page));
+            healthDataPageInfo = healthDataService.selectByUid(paramUser.getUserId(), paramUser.getPage());
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -132,6 +137,11 @@ public class MqttPubController {
     @PostMapping("/getUserDate")
     public List<HashMap<String, Object>> getUserDate(@RequestParam("userId") String userId){
         return healthDataService.getUserDate(userId);
+    }
+
+    @RequestMapping("/getAllUser")
+    public List<User> getAllUser(){
+        return healthDataService.getAllUser();
     }
 
 

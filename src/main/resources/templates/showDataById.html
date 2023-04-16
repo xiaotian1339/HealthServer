@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th>数据序号</th>
+            <th>用户名</th>
             <th>血氧</th>
             <th>心率</th>
             <th>数据可用性</th>
@@ -23,6 +24,7 @@
     <tbody>
         <tr th:each="data : ${dataList.list}">
             <td th:text="${data.id}"></td>
+            <td th:text="${data.uid}"></td>
             <td th:text="${data.oxygenSaturation}"></td>
             <td th:text="${data.heartRate}"></td>
             <td th:text="${data.available}"></td>

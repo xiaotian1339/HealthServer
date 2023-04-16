@@ -1,6 +1,7 @@
 package me.tcgg.mapper;
 
 import me.tcgg.pojo.HealthData;
+import me.tcgg.pojo.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.session.RowBounds;
 
@@ -25,6 +26,12 @@ public interface HealthDataMapper {
             @Result(property = "date", column = "date")
     })
     List<HashMap<String, Object>> selectDistinctDatesByUidWithSequence(@Param("uid") String uid);
+
+    @Select("select * from user;")
+    List<User> getAllUser();
+
+
+
 
 
 
