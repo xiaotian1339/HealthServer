@@ -105,10 +105,8 @@ public class MqttPubController {
 
 
     @PostMapping("/info")
-
     public PageInfo<HealthData> getHealthData(@RequestBody ParamUser paramUser) {
         PageInfo<HealthData> healthDataPageInfo;
-        System.out.println(paramUser.getUserId() + paramUser.getPage());
         try {
             healthDataPageInfo = healthDataService.selectByUid(paramUser.getUserId(), paramUser.getPage());
         } catch (Exception e) {
